@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter_app_template/core/data/storage/storage.dart';
+import 'package:flutter_app_template/core/domain/domain.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefsStorage implements IKeyValueStorage {
@@ -6,6 +9,7 @@ class SharedPrefsStorage implements IKeyValueStorage {
     : _sharedPreferences = sharedPreferences;
 
   final SharedPreferences _sharedPreferences;
+  static const _kAppDataKey = 'split_calc_state_v1';
 
   @override
   Future<bool> save({required String key, required Object value}) async {
@@ -30,6 +34,7 @@ class SharedPrefsStorage implements IKeyValueStorage {
     if (value is T) {
       return value;
     }
+    if (value == null) return null;
     throw ArgumentError("Expected type $T but found ${value.runtimeType}");
   }
 
@@ -41,5 +46,25 @@ class SharedPrefsStorage implements IKeyValueStorage {
   @override
   Future<bool> clear() async {
     return await _sharedPreferences.clear();
+  }
+
+  Future<void> saveAppData(AppData data) async {
+    await save(key: _kAppDataKey, value: jsonEncode(data.toJson()));
+  }
+
+  Future<AppData?> loadAppData() async {
+    try {
+      final raw = await get<String>(key: _kAppDataKey);
+      if (raw == null) return null;
+      return AppData.fromJson(jsonDecode(raw) as Map<String, dynamic>);
+    } catch (_) {
+      // Кривые старые данные – очищаем
+      await delete(key: _kAppDataKey);
+      return null;
+    }
+  }
+
+  Future<void> clearAppData() async {
+    await delete(key: _kAppDataKey);
   }
 }

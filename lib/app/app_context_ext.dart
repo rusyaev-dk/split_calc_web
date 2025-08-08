@@ -9,5 +9,9 @@ extension AppContextExt on BuildContext {
 
   AppThemeData get theme => Provider.of<AppThemeData>(this);
 
+  AppColorScheme get colorScheme => Provider.of<AppColorScheme>(this);
+
+  AppTextScheme get textScheme => Provider.of<AppTextScheme>(this);
+
   S get l10n => S.of(this);
 }

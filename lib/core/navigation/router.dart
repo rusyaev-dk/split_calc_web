@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_template/features/calc/presentation/screens/calc_screen.dart';
 import 'package:flutter_app_template/features/home/presentation/presentation.dart';
 import 'package:flutter_app_template/features/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +16,6 @@ class AppRouter {
     return GoRouter(
       initialLocation: '/home',
       navigatorKey: rootNavigatorKey,
-
       debugLogDiagnostics: true,
       observers: navigatorObservers,
       routes: _routes,
@@ -32,6 +32,13 @@ class AppRouter {
       path: '/home',
       name: 'home',
       builder: (context, _) => const HomeScreen(),
+      routes: [
+        GoRoute(
+          path: 'calc',
+          name: 'calc',
+          builder: (context, _) => const CalcScreen(),
+        ),
+      ],
     ),
   ];
 }

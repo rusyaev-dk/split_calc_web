@@ -6,6 +6,7 @@ import 'package:flutter_app_template/features/settings/presentation/presentation
 import 'package:flutter_app_template/features/splash/splash_screen.dart';
 import 'package:flutter_app_template/l10n/generated/l10n.dart';
 import 'package:flutter_app_template/uikit/themes/app_theme_data.dart';
+import 'package:flutter_app_template/uikit/uikit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
@@ -95,13 +96,17 @@ class _App extends StatelessWidget {
           ],
           supportedLocales: const [Locale('ru'), Locale('uz')],
           locale: state.locale,
-          theme: AppThemeData.lightTheme,
+
           darkTheme: AppThemeData.darkTheme,
-          themeMode: ThemeMode.light,
+          themeMode: themeModeFromSettings(state.theme),
           debugShowCheckedModeBanner: false,
           routerConfig: router,
         );
       },
     );
   }
+}
+
+ThemeMode themeModeFromSettings(AppTheme theme) {
+  return theme == AppTheme.light ? ThemeMode.light : ThemeMode.dark;
 }
