@@ -1,4 +1,4 @@
-import 'package:flutter_app_template/core/utils/utils.dart';
+import 'package:split_calculator/core/utils/utils.dart';
 
 /// {@template TimerRunner}
 /// Класс для подсчета времени запуска приложения

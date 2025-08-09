@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/app/app.dart';
+import 'package:split_calculator/app/app.dart';
 
 class MinimalCard extends StatelessWidget {
   const MinimalCard({

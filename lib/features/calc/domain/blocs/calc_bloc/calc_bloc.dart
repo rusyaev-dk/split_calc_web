@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_app_template/core/data/data.dart';
-import 'package:flutter_app_template/core/domain/domain.dart';
+import 'package:split_calculator/core/data/data.dart';
+import 'package:split_calculator/core/domain/domain.dart';
 
 part 'calc_event.dart';
 part 'calc_state.dart';

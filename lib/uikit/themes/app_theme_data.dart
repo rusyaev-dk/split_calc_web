@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/uikit/uikit.dart';
+import 'package:split_calculator/uikit/uikit.dart';
 
 abstract class AppThemeData {
   static const _lightColorScheme = AppColorScheme.light();

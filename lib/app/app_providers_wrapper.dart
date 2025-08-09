@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/core/data/storage/storage.dart';
-import 'package:flutter_app_template/core/utils/utils.dart';
-import 'package:flutter_app_template/di/di.dart';
-import 'package:flutter_app_template/features/calc/domain/domain.dart';
-import 'package:flutter_app_template/features/settings/data/data.dart';
-import 'package:flutter_app_template/features/settings/presentation/presentation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:split_calculator/core/data/storage/storage.dart';
+import 'package:split_calculator/core/utils/utils.dart';
+import 'package:split_calculator/di/di.dart';
+import 'package:split_calculator/features/calc/domain/domain.dart';
+import 'package:split_calculator/features/settings/data/data.dart';
+import 'package:split_calculator/features/settings/presentation/presentation.dart';
 
 class AppProvidersWrapper extends StatelessWidget {
   const AppProvidersWrapper({

@@ -1,5 +1,5 @@
-import 'package:flutter_app_template/app/app.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:split_calculator/app/app.dart';
 
 final class ApiConfig {
   ApiConfig._(this.env, this.baseUrl);

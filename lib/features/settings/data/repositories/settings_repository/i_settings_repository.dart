@@ -1,4 +1,4 @@
-import 'package:flutter_app_template/features/settings/presentation/presentation.dart';
+import 'package:split_calculator/features/settings/presentation/presentation.dart';
 
 abstract interface class ISettingsRepository {
   Future<bool> changeLocale(String newLocale);

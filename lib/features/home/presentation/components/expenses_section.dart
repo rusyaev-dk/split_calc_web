@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app_template/app/app.dart';
-import 'package:flutter_app_template/core/domain/domain.dart';
-import 'package:flutter_app_template/features/calc/domain/domain.dart';
-import 'package:flutter_app_template/features/home/presentation/presentation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:split_calculator/app/app.dart';
+import 'package:split_calculator/core/domain/domain.dart';
+import 'package:split_calculator/features/calc/domain/domain.dart';
+import 'package:split_calculator/features/home/presentation/presentation.dart';
 
 class ExpensesSection extends StatelessWidget {
   const ExpensesSection({
@@ -24,6 +24,7 @@ class ExpensesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = context.colorScheme;
+    final textScheme = context.textScheme;
     final bloc = context.read<CalcBloc>();
     final data = context.select<CalcBloc, AppData>((b) => b.state.data);
 
@@ -102,7 +103,10 @@ class ExpensesSection extends StatelessWidget {
           FilledButton.icon(
             onPressed: data.participants.isEmpty ? null : onSubmit,
             icon: const Icon(Icons.add),
-            label: const Text('Добавить'),
+            label: Text(
+              'Добавить',
+              style: textScheme.headline.copyWith(fontSize: 17),
+            ),
           ),
           const SizedBox(height: 12),
           Divider(height: 24, color: colorScheme.outlineVariant),

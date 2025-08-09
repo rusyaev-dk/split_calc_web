@@ -1,5 +1,5 @@
-name: flutter_app_template
-description: "A new Flutter project."
+name: "split_calculator"
+description: "Calculate billings with your friends easily"
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 

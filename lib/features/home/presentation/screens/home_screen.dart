@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/core/domain/domain.dart';
-import 'package:flutter_app_template/features/calc/domain/domain.dart';
-import 'package:flutter_app_template/features/home/presentation/presentation.dart';
-import 'package:flutter_app_template/features/settings/presentation/presentation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:split_calculator/core/domain/domain.dart';
+import 'package:split_calculator/features/calc/domain/domain.dart';
+import 'package:split_calculator/features/home/presentation/presentation.dart';
+import 'package:split_calculator/features/settings/presentation/presentation.dart';
 
 enum _BP { sm, lg, xl }
 

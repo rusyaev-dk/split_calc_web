@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/features/calc/domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:split_calculator/features/calc/domain/domain.dart';
 
 class CalcScreen extends StatelessWidget {
   const CalcScreen({super.key});

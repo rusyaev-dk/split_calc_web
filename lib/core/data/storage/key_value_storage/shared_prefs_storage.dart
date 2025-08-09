@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter_app_template/core/data/storage/storage.dart';
-import 'package:flutter_app_template/core/domain/domain.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:split_calculator/core/data/storage/storage.dart';
+import 'package:split_calculator/core/domain/domain.dart';
 
 class SharedPrefsStorage implements IKeyValueStorage {
   SharedPrefsStorage({required SharedPreferences sharedPreferences})

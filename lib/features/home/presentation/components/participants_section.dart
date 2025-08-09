@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/app/app.dart';
-import 'package:flutter_app_template/core/domain/domain.dart';
-import 'package:flutter_app_template/features/calc/domain/domain.dart';
-import 'package:flutter_app_template/features/home/presentation/components/components.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:split_calculator/app/app.dart';
+import 'package:split_calculator/core/domain/domain.dart';
+import 'package:split_calculator/features/calc/domain/domain.dart';
+import 'package:split_calculator/features/home/presentation/components/components.dart';
 
 class ParticipantsSection extends StatelessWidget {
   const ParticipantsSection({required this.nameCtrl, super.key});
@@ -12,6 +12,7 @@ class ParticipantsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = context.colorScheme;
+    final textScheme = context.textScheme;
     final participants = context.select<CalcBloc, List<Participant>>(
       (b) => b.state.data.participants,
     );
@@ -39,6 +40,7 @@ class ParticipantsSection extends StatelessWidget {
           Row(
             children: [
               Expanded(
+                flex: 4,
                 child: TextField(
                   controller: nameCtrl,
                   decoration: InputDecoration(
@@ -53,7 +55,19 @@ class ParticipantsSection extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              FilledButton(onPressed: add, child: const Text('Добавить')),
+              Expanded(
+                flex: 2,
+                child: FilledButton(
+                  onPressed: add,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Добавить',
+                      style: textScheme.headline.copyWith(fontSize: 17),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 12),

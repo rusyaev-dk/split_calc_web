@@ -1,7 +1,7 @@
-import 'package:flutter_app_template/app/app.dart';
-import 'package:flutter_app_template/core/data/storage/storage.dart';
-import 'package:flutter_app_template/features/settings/data/data.dart';
-import 'package:flutter_app_template/features/settings/presentation/presentation.dart';
+import 'package:split_calculator/app/app.dart';
+import 'package:split_calculator/core/data/storage/storage.dart';
+import 'package:split_calculator/features/settings/data/data.dart';
+import 'package:split_calculator/features/settings/presentation/presentation.dart';
 
 class SettingsRepository implements ISettingsRepository {
   SettingsRepository({required IKeyValueStorage storage}) : _storage = storage;

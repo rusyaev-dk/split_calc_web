@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/app/app.dart';
-import 'package:flutter_app_template/core/utils/utils.dart';
-import 'package:flutter_app_template/features/settings/data/data.dart';
+import 'package:split_calculator/app/app.dart';
+import 'package:split_calculator/core/utils/utils.dart';
+import 'package:split_calculator/features/settings/data/data.dart';
 
 part 'settings_state.dart';
 

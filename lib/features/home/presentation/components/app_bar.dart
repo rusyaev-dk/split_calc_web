@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/app/app.dart';
-import 'package:flutter_app_template/features/home/presentation/presentation.dart';
-import 'package:flutter_app_template/features/settings/presentation/presentation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:split_calculator/app/app.dart';
+import 'package:split_calculator/features/home/presentation/presentation.dart';
+import 'package:split_calculator/features/settings/presentation/presentation.dart';
 
 class HomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   const HomeAppBar({

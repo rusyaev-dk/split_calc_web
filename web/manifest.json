@@ -1,6 +1,6 @@
 {
-    "name": "flutter_app_template",
-    "short_name": "flutter_app_template",
+    "name": "split_calculator",
+    "short_name": "split_calculator",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

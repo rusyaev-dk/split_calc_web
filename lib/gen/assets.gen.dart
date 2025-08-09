@@ -15,6 +15,22 @@ import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:lottie/lottie.dart' as _lottie;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
+class $EnvGen {
+  const $EnvGen();
+
+  /// File path: env/dev.env
+  String get dev => 'env/dev.env';
+
+  /// File path: env/prod.env
+  String get prod => 'env/prod.env';
+
+  /// File path: env/stage.env
+  String get stage => 'env/stage.env';
+
+  /// List of all assets
+  List<String> get values => [dev, prod, stage];
+}
+
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
@@ -56,12 +72,12 @@ class $AssetsIconsGen {
 class $AssetsLottieGen {
   const $AssetsLottieGen();
 
-  /// File path: assets/lottie/splash.json
-  LottieGenImage get splash =>
-      const LottieGenImage('assets/lottie/splash.json');
+  /// File path: assets/lottie/loading_splash.json
+  LottieGenImage get loadingSplash =>
+      const LottieGenImage('assets/lottie/loading_splash.json');
 
   /// List of all assets
-  List<LottieGenImage> get values => [splash];
+  List<LottieGenImage> get values => [loadingSplash];
 }
 
 class Assets {
@@ -70,6 +86,7 @@ class Assets {
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsLottieGen lottie = $AssetsLottieGen();
+  static const $EnvGen env = $EnvGen();
 }
 
 class SvgGenImage {

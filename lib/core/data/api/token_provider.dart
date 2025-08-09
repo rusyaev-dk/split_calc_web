@@ -1,4 +1,4 @@
-import 'package:flutter_app_template/core/data/data.dart';
+import 'package:split_calculator/core/data/data.dart';
 
 class AuthTokenProvider implements IAuthTokenProvider {
   AuthTokenProvider({

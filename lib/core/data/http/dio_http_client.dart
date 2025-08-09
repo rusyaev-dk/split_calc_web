@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_app_template/core/data/data.dart';
+import 'package:split_calculator/core/data/data.dart';
 
 class DioHttpClient implements IHttpClient {
   DioHttpClient({required Dio dio, required ApiConfig apiConfig})

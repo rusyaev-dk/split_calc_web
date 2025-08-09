@@ -1,5 +1,5 @@
-import 'package:flutter_app_template/core/data/storage/storage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:split_calculator/core/data/storage/storage.dart';
 
 class SecureStorage implements IKeyValueStorage {
   SecureStorage({required FlutterSecureStorage secureStorage})

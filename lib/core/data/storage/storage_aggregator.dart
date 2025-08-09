@@ -1,4 +1,4 @@
-import 'package:flutter_app_template/core/data/storage/storage.dart';
+import 'package:split_calculator/core/data/storage/storage.dart';
 
 class StorageAggregator {
   StorageAggregator({

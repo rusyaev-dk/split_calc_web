@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_app_template/core/domain/entity/entity.dart';
+import 'package:split_calculator/core/domain/entity/entity.dart';
 
 class AppData {
   const AppData({required this.participants, required this.expenses});

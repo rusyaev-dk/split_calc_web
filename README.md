@@ -66,8 +66,8 @@ Repositories, APIs, Storage, DTOs
 ### 1. Clone and install dependencies
 
 ```bash
-git clone https://github.com/your-org/flutter_app_template.git
-cd flutter_app_template
+git clone https://github.com/your-org/split_calculator.git
+cd split_calculator
 flutter pub get
 ```
 

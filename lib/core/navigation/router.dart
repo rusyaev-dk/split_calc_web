@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/features/calc/presentation/screens/calc_screen.dart';
-import 'package:flutter_app_template/features/home/presentation/presentation.dart';
-import 'package:flutter_app_template/features/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:split_calculator/features/calc/presentation/screens/calc_screen.dart';
+import 'package:split_calculator/features/home/presentation/presentation.dart';
+import 'package:split_calculator/features/splash/splash_screen.dart';
 
 class AppRouter {
   AppRouter();
