@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_template/app/app.dart';
 import 'package:flutter_app_template/core/domain/domain.dart';
 import 'package:flutter_app_template/features/calc/domain/domain.dart';
 import 'package:flutter_app_template/features/home/presentation/components/components.dart';
@@ -10,6 +11,7 @@ class ParticipantsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
     final participants = context.select<CalcBloc, List<Participant>>(
       (b) => b.state.data.participants,
     );
@@ -27,17 +29,25 @@ class ParticipantsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Участники', style: Theme.of(context).textTheme.titleMedium),
+          Text(
+            'Участники',
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(color: colorScheme.onSurface),
+          ),
           const SizedBox(height: 12),
           Row(
             children: [
               Expanded(
                 child: TextField(
                   controller: nameCtrl,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Имя',
                     hintText: 'Например, Алиса',
-                    prefixIcon: Icon(Icons.person_add_alt_1_outlined),
+                    prefixIcon: Icon(
+                      Icons.person_add_alt_1_outlined,
+                      color: colorScheme.onSurfaceVariant,
+                    ),
                   ),
                   onSubmitted: (_) => add(),
                 ),
@@ -52,9 +62,9 @@ class ParticipantsSection extends StatelessWidget {
             runSpacing: 8,
             children: [
               for (final p in participants)
-                InputChip(
-                  label: Text(p.name),
-                  onDeleted: () => bloc.add(CalcRemoveParticipantEvent(p.id)),
+                HoverChip(
+                  label: p.name,
+                  onDelete: () => bloc.add(CalcRemoveParticipantEvent(p.id)),
                 ),
             ],
           ),

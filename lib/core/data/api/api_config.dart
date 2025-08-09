@@ -2,22 +2,19 @@ import 'package:flutter_app_template/app/app.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 final class ApiConfig {
+  ApiConfig._(this.env, this.baseUrl);
+
   factory ApiConfig(AppEnv env) {
-    final path = switch (env) {
-      AppEnv.dev => 'env/dev.env',
-      AppEnv.stage => 'env/stage.env',
-      AppEnv.prod => 'env/prod.env',
-    };
-
-    dotenv.load(fileName: path);
-
-    return ApiConfig._internal(
-      env,
-      dotenv.env['BASE_URL'] ?? 'MISSING_BASE_URL',
-    );
+    final v = dotenv.maybeGet('BASE_URL');
+    if (v == null || v.isEmpty) {
+      throw StateError(
+        'ENV BASE_URL is missing. '
+        'Make sure you loaded the correct .env file for $env '
+        'and that BASE_URL is set.',
+      );
+    }
+    return ApiConfig._(env, v);
   }
-
-  ApiConfig._internal(this.env, this.baseUrl);
 
   final String baseUrl;
   final AppEnv env;

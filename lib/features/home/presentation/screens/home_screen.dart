@@ -15,14 +15,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _nameCtrl = TextEditingController();
-  final _titleCtrl = TextEditingController();
-  final _amountCtrl = TextEditingController();
+  late final TextEditingController _nameCtrl;
+  late final TextEditingController _titleCtrl;
+  late final TextEditingController _amountCtrl;
   String? _selectedPayer;
 
   @override
   void initState() {
     super.initState();
+    _nameCtrl = TextEditingController();
+    _titleCtrl = TextEditingController();
+    _amountCtrl = TextEditingController();
     context.read<CalcBloc>().add(CalcLoadEvent());
   }
 
@@ -30,7 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: cs.surface,
+      appBar: HomeAppBar(),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -95,11 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        HeaderBar(),
-                        const SizedBox(height: 16),
                         Expanded(
                           child: SingleChildScrollView(
-                            padding: EdgeInsets.zero,
+                            padding: EdgeInsets.only(top: 60),
                             child: Column(
                               children: [
                                 if (bp == _BP.xl) ...[
@@ -172,6 +175,14 @@ class _HomeScreenState extends State<HomeScreen> {
     _amountCtrl.clear();
     _selectedPayer = payerId; // запомним последнего плательщика
     setState(() {});
+  }
+
+  @override
+  void dispose() {
+    _amountCtrl.dispose();
+    _nameCtrl.dispose();
+    _titleCtrl.dispose();
+    super.dispose();
   }
 }
 

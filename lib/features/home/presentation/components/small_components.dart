@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_template/app/app.dart';
 
 class MinimalCard extends StatelessWidget {
   const MinimalCard({
@@ -11,12 +12,12 @@ class MinimalCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
+    final c = context.colorScheme;
     return Container(
       decoration: BoxDecoration(
-        color: cs.surface, // плоский фон
+        color: c.sectionBackgroundColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: cs.outlineVariant.withOpacity(.6)),
+        border: Border.all(color: c.outlineVariant),
       ),
       padding: padding,
       child: child,
@@ -27,14 +28,15 @@ class MinimalCard extends StatelessWidget {
 class Metric extends StatelessWidget {
   const Metric({required this.label, required this.value, super.key});
   final String label, value;
+
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
+    final colorScheme = context.colorScheme;
     return Container(
       decoration: BoxDecoration(
-        color: cs.surface,
+        color: colorScheme.surfaceContainerLow,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: cs.outlineVariant.withOpacity(.6)),
+        border: Border.all(color: colorScheme.outlineVariant),
       ),
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
       child: Column(
@@ -42,7 +44,7 @@ class Metric extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(fontSize: 12, color: cs.onSurfaceVariant),
+            style: TextStyle(fontSize: 12, color: colorScheme.onSurfaceVariant),
           ),
           const SizedBox(height: 6),
           Text(
@@ -59,13 +61,21 @@ class HoverChip extends StatelessWidget {
   const HoverChip({required this.label, required this.onDelete, super.key});
   final String label;
   final VoidCallback onDelete;
+
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: InputChip(
-        label: Text(label),
-        deleteIcon: const Icon(Icons.close, size: 18),
+        label: Text(label, style: TextStyle(color: colorScheme.onSurface)),
+        backgroundColor: colorScheme.surfaceContainerLow,
+        side: BorderSide(color: colorScheme.outlineVariant),
+        deleteIcon: Icon(
+          Icons.close,
+          size: 18,
+          color: colorScheme.onSurfaceVariant,
+        ),
         onDeleted: onDelete,
       ),
     );

@@ -12,6 +12,7 @@ import 'package:flutter_app_template/di/di.dart';
 import 'package:flutter_app_template/features/error/error_screen.dart';
 import 'package:flutter_app_template/runners/runners.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -120,6 +121,15 @@ class AppRunner {
     await Future.delayed(Duration(milliseconds: 1500));
     logger.log('Build type: ${env.name}');
 
+    final file = _fileFor(env);
+    try {
+      await dotenv.load(fileName: file);
+      logger.log('dotenv loaded: $file');
+    } catch (e) {
+      logger.warning('dotenv not loaded, will use defaults: $e');
+    }
+    final apiConfig = ApiConfig(env);
+
     final dio = Dio();
 
     if (env == AppEnv.dev || env == AppEnv.stage) {
@@ -145,7 +155,6 @@ class AppRunner {
       sharedPrefsStorage: sharedPrefsStorage,
     );
 
-    final apiConfig = ApiConfig(env);
     final httpClient = DioHttpClient(dio: dio, apiConfig: apiConfig);
     final authTokenProvider = AuthTokenProvider(
       httpClient: httpClient,
@@ -169,3 +178,9 @@ class AppRunner {
     );
   }
 }
+
+String _fileFor(AppEnv env) => switch (env) {
+  AppEnv.dev => 'env/dev.env',
+  AppEnv.stage => 'env/stage.env',
+  AppEnv.prod => 'env/prod.env',
+};

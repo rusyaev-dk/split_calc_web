@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_template/app/app.dart';
 import 'package:flutter_app_template/core/domain/domain.dart';
 import 'package:flutter_app_template/features/calc/domain/domain.dart';
 import 'package:flutter_app_template/features/home/presentation/presentation.dart';
@@ -22,6 +23,7 @@ class ExpensesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
     final bloc = context.read<CalcBloc>();
     final data = context.select<CalcBloc, AppData>((b) => b.state.data);
 
@@ -36,15 +38,20 @@ class ExpensesSection extends StatelessWidget {
         children: [
           Text(
             'Добавить расход',
-            style: Theme.of(context).textTheme.titleMedium,
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(color: colorScheme.onSurface),
           ),
           const SizedBox(height: 12),
           TextField(
             controller: titleCtrl,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Описание',
               hintText: 'Например, пицца',
-              prefixIcon: Icon(Icons.edit_outlined),
+              prefixIcon: Icon(
+                Icons.edit_outlined,
+                color: colorScheme.onSurfaceVariant,
+              ),
             ),
           ),
           const SizedBox(height: 8),
@@ -53,10 +60,13 @@ class ExpensesSection extends StatelessWidget {
               Expanded(
                 child: DropdownButtonFormField<String>(
                   key: ValueKey(ids.join(',')),
-                  initialValue: safeValue,
-                  decoration: const InputDecoration(
+                  initialValue: safeValue, // <-- было initialValue
+                  decoration: InputDecoration(
                     labelText: 'Кто платил',
-                    prefixIcon: Icon(Icons.account_circle_outlined),
+                    prefixIcon: Icon(
+                      Icons.account_circle_outlined,
+                      color: colorScheme.onSurfaceVariant,
+                    ),
                   ),
                   items: [
                     for (final p in data.participants)
@@ -73,12 +83,15 @@ class ExpensesSection extends StatelessWidget {
                     decimal: true,
                   ),
                   inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[0-9\\.,]')),
+                    FilteringTextInputFormatter.allow(RegExp(r'[0-9\.,]')),
                   ],
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Сумма',
                     hintText: '0.00',
-                    prefixIcon: Icon(Icons.payments_outlined),
+                    prefixIcon: Icon(
+                      Icons.payments_outlined,
+                      color: colorScheme.onSurfaceVariant,
+                    ),
                   ),
                   onSubmitted: (_) => onSubmit(),
                 ),
@@ -92,7 +105,7 @@ class ExpensesSection extends StatelessWidget {
             label: const Text('Добавить'),
           ),
           const SizedBox(height: 12),
-          const Divider(height: 24),
+          Divider(height: 24, color: colorScheme.outlineVariant),
           ...data.expenses.map((e) {
             final payer = data.participants
                 .firstWhere((p) => p.id == e.payerId)
@@ -100,11 +113,23 @@ class ExpensesSection extends StatelessWidget {
             return ListTile(
               dense: true,
               contentPadding: EdgeInsets.zero,
-              leading: const Icon(Icons.receipt_long_outlined),
-              title: Text(e.title.isEmpty ? 'Без описания' : e.title),
-              subtitle: Text('$payer • ${e.amount.toStringAsFixed(2)}'),
+              leading: Icon(
+                Icons.receipt_long_outlined,
+                color: colorScheme.onSurfaceVariant,
+              ),
+              title: Text(
+                e.title.isEmpty ? 'Без описания' : e.title,
+                style: TextStyle(color: colorScheme.onSurface),
+              ),
+              subtitle: Text(
+                '$payer • ${e.amount.toStringAsFixed(2)}',
+                style: TextStyle(color: colorScheme.onSurfaceVariant),
+              ),
               trailing: IconButton(
-                icon: const Icon(Icons.delete_outline),
+                icon: Icon(
+                  Icons.delete_outline,
+                  color: colorScheme.onSurfaceVariant,
+                ),
                 onPressed: () => bloc.add(CalcRemoveExpenseEvent(e.id)),
               ),
             );

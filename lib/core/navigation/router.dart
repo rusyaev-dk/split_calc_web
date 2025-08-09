@@ -14,7 +14,7 @@ class AppRouter {
     required List<NavigatorObserver> navigatorObservers,
   }) {
     return GoRouter(
-      initialLocation: '/home',
+      initialLocation: '/',
       navigatorKey: rootNavigatorKey,
       debugLogDiagnostics: true,
       observers: navigatorObservers,
@@ -29,7 +29,7 @@ class AppRouter {
       builder: (context, _) => const SplashScreen(),
     ),
     GoRoute(
-      path: '/home',
+      path: '/',
       name: 'home',
       builder: (context, _) => const HomeScreen(),
       routes: [

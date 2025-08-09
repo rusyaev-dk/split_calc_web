@@ -1,6 +1,5 @@
 part of 'app_runner.dart';
 
-/// Метод инициализации обработчиков ошибок
 void _initErrorHandlers(ILogger logger) {
   // Обработка ошибок в приложении
   FlutterError.onError = (details) {

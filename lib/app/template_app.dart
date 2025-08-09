@@ -96,7 +96,7 @@ class _App extends StatelessWidget {
           ],
           supportedLocales: const [Locale('ru'), Locale('uz')],
           locale: state.locale,
-
+          theme: AppThemeData.lightTheme,
           darkTheme: AppThemeData.darkTheme,
           themeMode: themeModeFromSettings(state.theme),
           debugShowCheckedModeBanner: false,

@@ -32,18 +32,9 @@ dependencies:
   go_router: ^16.0.0
   shared_preferences: 2.3.5
   flutter_secure_storage: ^9.2.4
-  flutter_dotenv: 5.2.1 
-  ### основной сервис с интерфейсами
+  flutter_dotenv: 5.2.1
+  flutter_animate: 4.5.2
   
-  i_app_services:
-    path: ./app_services/i_app_services
-
-  ### реализация сервисов ###
-  ### В зависимости от платформы ###
-  app_services:
-    path: app_services/base/app_services ### Базовая реализация ###
-    # path: app_services/aurora/app_services ### Аврора реализация ###
-    # path: app_services/hms/app_services ### HarmonyOS реализация ###
 
 dev_dependencies:
   flutter_test:
@@ -57,7 +48,9 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
-    - env/
+    - env/dev.env
+    - env/stage.env
+    - env/prod.env
     - assets/icons/
     - assets/fonts/
     - assets/lottie/
